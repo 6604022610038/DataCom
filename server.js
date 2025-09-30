@@ -4,6 +4,12 @@ const WebSocket = require('ws');
 const path = require('path');
 
 const app = express();
+
+// แก้ไขตรงนี้: ให้ส่ง index.html เมื่อเข้า /
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
